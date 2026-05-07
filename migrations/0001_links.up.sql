@@ -1,0 +1,10 @@
+CREATE SEQUENCE IF NOT EXISTS link_seq START WITH 1000;
+
+CREATE TABLE IF NOT EXISTS links (
+    id          BIGSERIAL PRIMARY KEY,
+    code        TEXT NOT NULL UNIQUE,
+    url         TEXT NOT NULL,
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_links_code ON links (code);
